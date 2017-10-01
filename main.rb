@@ -13,7 +13,7 @@ ticket_transaction_path = '/api/transactions/'
 a = Mechanize.new do |agent|
   agent.user_agent_alias = 'Mac Safari'
   logger = Logger.new STDOUT
-  logger.level = Logger::DEBUG
+  logger.level = Logger::INFO
   agent.log = logger
 
 end
