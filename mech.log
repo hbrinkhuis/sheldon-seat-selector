@@ -1,0 +1,128 @@
+# Logfile created on 2017-10-01 14:33:38 +0200 by logger.rb/56815
+D, [2017-10-01T14:33:38.689292 #33300] DEBUG -- : query: ""
+I, [2017-10-01T14:33:38.690904 #33300]  INFO -- : Net::HTTP::Post: /tickets/start/2308082
+D, [2017-10-01T14:33:38.691019 #33300] DEBUG -- : request-header: accept-encoding => gzip,deflate,identity
+D, [2017-10-01T14:33:38.691107 #33300] DEBUG -- : request-header: accept => */*
+D, [2017-10-01T14:33:38.691192 #33300] DEBUG -- : request-header: user-agent => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9
+D, [2017-10-01T14:33:38.691276 #33300] DEBUG -- : request-header: accept-charset => ISO-8859-1,utf-8;q=0.7,*;q=0.7
+D, [2017-10-01T14:33:38.691359 #33300] DEBUG -- : request-header: accept-language => en-us,en;q=0.5
+D, [2017-10-01T14:33:38.691446 #33300] DEBUG -- : request-header: host => pathe.nl
+D, [2017-10-01T14:33:38.691530 #33300] DEBUG -- : request-header: content-type => application/x-www-form-urlencoded
+D, [2017-10-01T14:33:38.691612 #33300] DEBUG -- : request-header: content-length => 0
+I, [2017-10-01T14:33:38.756231 #33300]  INFO -- : status: Net::HTTPFound 1.1 302 Found
+D, [2017-10-01T14:33:38.756483 #33300] DEBUG -- : response-header: cache-control => no-cache
+D, [2017-10-01T14:33:38.756635 #33300] DEBUG -- : response-header: content-length => 0
+D, [2017-10-01T14:33:38.756782 #33300] DEBUG -- : response-header: location => https://www.pathe.nl/tickets/start/2308082
+D, [2017-10-01T14:33:38.756926 #33300] DEBUG -- : response-header: connection => close
+D, [2017-10-01T14:33:38.757347 #33300] DEBUG -- : Read 0 bytes (0 total)
+I, [2017-10-01T14:33:38.758346 #33300]  INFO -- : follow redirect to: https://www.pathe.nl/tickets/start/2308082
+I, [2017-10-01T14:33:38.759907 #33300]  INFO -- : Net::HTTP::Get: /tickets/start/2308082
+D, [2017-10-01T14:33:38.760005 #33300] DEBUG -- : request-header: accept-encoding => gzip,deflate,identity
+D, [2017-10-01T14:33:38.760089 #33300] DEBUG -- : request-header: accept => */*
+D, [2017-10-01T14:33:38.760172 #33300] DEBUG -- : request-header: user-agent => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9
+D, [2017-10-01T14:33:38.760255 #33300] DEBUG -- : request-header: accept-charset => ISO-8859-1,utf-8;q=0.7,*;q=0.7
+D, [2017-10-01T14:33:38.760336 #33300] DEBUG -- : request-header: accept-language => en-us,en;q=0.5
+D, [2017-10-01T14:33:38.760417 #33300] DEBUG -- : request-header: host => www.pathe.nl
+I, [2017-10-01T14:33:38.923078 #33300]  INFO -- : status: Net::HTTPOK 1.1 200 OK
+D, [2017-10-01T14:33:38.923362 #33300] DEBUG -- : response-header: cache-control => private
+D, [2017-10-01T14:33:38.923549 #33300] DEBUG -- : response-header: content-type => text/html; charset=utf-8
+D, [2017-10-01T14:33:38.923692 #33300] DEBUG -- : response-header: content-language => nl-NL
+D, [2017-10-01T14:33:38.923834 #33300] DEBUG -- : response-header: server => ATS/4.2.1.1
+D, [2017-10-01T14:33:38.923985 #33300] DEBUG -- : response-header: set-cookie => ai=1QMhzBKgFDERWu-IbMQyMER1hI8PHr6hwgG1tRjbR5i6MYbywcaIG7_0UyWtY-LIf2QU6q5w7j3p3lTm_7mJz90wrhUioYCyUyX4BDU1v_G5xmmNLsY45Hfc3yzEBb5ip5kWjg2; expires=Mon, 01-Oct-2018 12:33:37 GMT; path=/; HttpOnly; Secure, SERVERID=w7; path=/; Secure
+D, [2017-10-01T14:33:38.924130 #33300] DEBUG -- : response-header: date => Sun, 01 Oct 2017 12:33:37 GMT
+D, [2017-10-01T14:33:38.924271 #33300] DEBUG -- : response-header: content-encoding => gzip
+D, [2017-10-01T14:33:38.924411 #33300] DEBUG -- : response-header: vary => Accept-Encoding
+D, [2017-10-01T14:33:38.924552 #33300] DEBUG -- : response-header: age => 0
+D, [2017-10-01T14:33:38.924693 #33300] DEBUG -- : response-header: transfer-encoding => chunked
+D, [2017-10-01T14:33:38.924834 #33300] DEBUG -- : response-header: via => http/1.1 ATS03-NEWPATHE (ApacheTrafficServer/4.2.1.1 [cMsSf ])
+D, [2017-10-01T14:33:38.925207 #33300] DEBUG -- : Read 10 bytes (10 total)
+D, [2017-10-01T14:33:38.936257 #33300] DEBUG -- : Read 4096 bytes (4106 total)
+D, [2017-10-01T14:33:38.936731 #33300] DEBUG -- : Read 4096 bytes (8202 total)
+D, [2017-10-01T14:33:38.937192 #33300] DEBUG -- : Read 674 bytes (8876 total)
+D, [2017-10-01T14:33:38.937717 #33300] DEBUG -- : gzip response
+D, [2017-10-01T14:33:38.953304 #33300] DEBUG -- : saved cookie: ai=1QMhzBKgFDERWu-IbMQyMER1hI8PHr6hwgG1tRjbR5i6MYbywcaIG7_0UyWtY-LIf2QU6q5w7j3p3lTm_7mJz90wrhUioYCyUyX4BDU1v_G5xmmNLsY45Hfc3yzEBb5ip5kWjg2
+D, [2017-10-01T14:33:38.953974 #33300] DEBUG -- : saved cookie: SERVERID=w7
+I, [2017-10-01T14:33:38.973537 #33300]  INFO -- : form encoding: UTF-8
+D, [2017-10-01T14:33:38.973718 #33300] DEBUG -- : query: ""
+I, [2017-10-01T14:33:38.976032 #33300]  INFO -- : Net::HTTP::Post: /tickets/start/2308082
+D, [2017-10-01T14:33:38.976167 #33300] DEBUG -- : request-header: accept-encoding => gzip,deflate,identity
+D, [2017-10-01T14:33:38.976251 #33300] DEBUG -- : request-header: accept => */*
+D, [2017-10-01T14:33:38.976334 #33300] DEBUG -- : request-header: user-agent => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9
+D, [2017-10-01T14:33:38.976416 #33300] DEBUG -- : request-header: accept-charset => ISO-8859-1,utf-8;q=0.7,*;q=0.7
+D, [2017-10-01T14:33:38.976497 #33300] DEBUG -- : request-header: accept-language => en-us,en;q=0.5
+D, [2017-10-01T14:33:38.976577 #33300] DEBUG -- : request-header: cookie => SERVERID=w7; ai=1QMhzBKgFDERWu-IbMQyMER1hI8PHr6hwgG1tRjbR5i6MYbywcaIG7_0UyWtY-LIf2QU6q5w7j3p3lTm_7mJz90wrhUioYCyUyX4BDU1v_G5xmmNLsY45Hfc3yzEBb5ip5kWjg2
+D, [2017-10-01T14:33:38.976663 #33300] DEBUG -- : request-header: host => www.pathe.nl
+D, [2017-10-01T14:33:38.976768 #33300] DEBUG -- : request-header: referer => https://www.pathe.nl/tickets/start/2308082
+D, [2017-10-01T14:33:38.976851 #33300] DEBUG -- : request-header: content-type => application/x-www-form-urlencoded
+D, [2017-10-01T14:33:38.976931 #33300] DEBUG -- : request-header: content-length => 0
+I, [2017-10-01T14:33:39.786622 #33300]  INFO -- : status: Net::HTTPFound 1.1 302 Found
+D, [2017-10-01T14:33:39.786769 #33300] DEBUG -- : response-header: cache-control => private
+D, [2017-10-01T14:33:39.786856 #33300] DEBUG -- : response-header: content-type => text/html; charset=utf-8
+D, [2017-10-01T14:33:39.786938 #33300] DEBUG -- : response-header: content-language => nl-NL
+D, [2017-10-01T14:33:39.787020 #33300] DEBUG -- : response-header: location => /tickets/C122C3DF131B7689173069B608BD4BB8
+D, [2017-10-01T14:33:39.787118 #33300] DEBUG -- : response-header: server => ATS/4.2.1.1
+D, [2017-10-01T14:33:39.787221 #33300] DEBUG -- : response-header: set-cookie => cinemec=0; expires=Tue, 31-Oct-2017 13:33:37 GMT; path=/tickets; HttpOnly; Secure, tru=https://www.pathe.nl/tickets/start/2308082; expires=Tue, 31-Oct-2017 13:33:38 GMT; path=/; HttpOnly; Secure, aui=0; expires=Tue, 31-Oct-2017 13:33:38 GMT; path=/tickets; HttpOnly; Secure
+D, [2017-10-01T14:33:39.787311 #33300] DEBUG -- : response-header: date => Sun, 01 Oct 2017 12:33:37 GMT
+D, [2017-10-01T14:33:39.787463 #33300] DEBUG -- : response-header: content-length => 158
+D, [2017-10-01T14:33:39.787647 #33300] DEBUG -- : response-header: age => 2
+D, [2017-10-01T14:33:39.787811 #33300] DEBUG -- : response-header: via => http/1.1 ATS03-NEWPATHE (ApacheTrafficServer/4.2.1.1 [cMs f ])
+D, [2017-10-01T14:33:39.788370 #33300] DEBUG -- : Read 158 bytes (158 total)
+D, [2017-10-01T14:33:39.791032 #33300] DEBUG -- : saved cookie: cinemec=0
+D, [2017-10-01T14:33:39.792096 #33300] DEBUG -- : saved cookie: tru=https://www.pathe.nl/tickets/start/2308082
+D, [2017-10-01T14:33:39.793352 #33300] DEBUG -- : saved cookie: aui=0
+I, [2017-10-01T14:33:39.793605 #33300]  INFO -- : follow redirect to: /tickets/C122C3DF131B7689173069B608BD4BB8
+I, [2017-10-01T14:33:39.796361 #33300]  INFO -- : Net::HTTP::Get: /tickets/C122C3DF131B7689173069B608BD4BB8
+D, [2017-10-01T14:33:39.796478 #33300] DEBUG -- : request-header: accept-encoding => gzip,deflate,identity
+D, [2017-10-01T14:33:39.796563 #33300] DEBUG -- : request-header: accept => */*
+D, [2017-10-01T14:33:39.796646 #33300] DEBUG -- : request-header: user-agent => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9
+D, [2017-10-01T14:33:39.796750 #33300] DEBUG -- : request-header: accept-charset => ISO-8859-1,utf-8;q=0.7,*;q=0.7
+D, [2017-10-01T14:33:39.796834 #33300] DEBUG -- : request-header: accept-language => en-us,en;q=0.5
+D, [2017-10-01T14:33:39.796915 #33300] DEBUG -- : request-header: cookie => SERVERID=w7; ai=1QMhzBKgFDERWu-IbMQyMER1hI8PHr6hwgG1tRjbR5i6MYbywcaIG7_0UyWtY-LIf2QU6q5w7j3p3lTm_7mJz90wrhUioYCyUyX4BDU1v_G5xmmNLsY45Hfc3yzEBb5ip5kWjg2; aui=0; cinemec=0; tru=https://www.pathe.nl/tickets/start/2308082
+D, [2017-10-01T14:33:39.796997 #33300] DEBUG -- : request-header: host => www.pathe.nl
+D, [2017-10-01T14:33:39.797101 #33300] DEBUG -- : request-header: referer => https://www.pathe.nl/tickets/start/2308082
+I, [2017-10-01T14:33:40.201615 #33300]  INFO -- : status: Net::HTTPOK 1.1 200 OK
+D, [2017-10-01T14:33:40.201890 #33300] DEBUG -- : response-header: cache-control => no-cache
+D, [2017-10-01T14:33:40.202083 #33300] DEBUG -- : response-header: pragma => no-cache
+D, [2017-10-01T14:33:40.202375 #33300] DEBUG -- : response-header: content-type => text/html; charset=utf-8
+D, [2017-10-01T14:33:40.202584 #33300] DEBUG -- : response-header: content-language => nl-NL
+D, [2017-10-01T14:33:40.202731 #33300] DEBUG -- : response-header: expires => -1
+D, [2017-10-01T14:33:40.202872 #33300] DEBUG -- : response-header: server => ATS/4.2.1.1
+D, [2017-10-01T14:33:40.203013 #33300] DEBUG -- : response-header: date => Sun, 01 Oct 2017 12:33:38 GMT
+D, [2017-10-01T14:33:40.203154 #33300] DEBUG -- : response-header: content-encoding => gzip
+D, [2017-10-01T14:33:40.203293 #33300] DEBUG -- : response-header: vary => Accept-Encoding
+D, [2017-10-01T14:33:40.203433 #33300] DEBUG -- : response-header: age => 2
+D, [2017-10-01T14:33:40.203581 #33300] DEBUG -- : response-header: transfer-encoding => chunked
+D, [2017-10-01T14:33:40.203749 #33300] DEBUG -- : response-header: via => http/1.1 ATS03-NEWPATHE (ApacheTrafficServer/4.2.1.1 [cMsSf ])
+D, [2017-10-01T14:33:40.204174 #33300] DEBUG -- : Read 10 bytes (10 total)
+D, [2017-10-01T14:33:40.214040 #33300] DEBUG -- : Read 4096 bytes (4106 total)
+D, [2017-10-01T14:33:40.214526 #33300] DEBUG -- : Read 4096 bytes (8202 total)
+D, [2017-10-01T14:33:40.219827 #33300] DEBUG -- : Read 4096 bytes (12298 total)
+D, [2017-10-01T14:33:40.220181 #33300] DEBUG -- : Read 2614 bytes (14912 total)
+D, [2017-10-01T14:33:40.220707 #33300] DEBUG -- : gzip response
+D, [2017-10-01T14:33:54.741288 #33300] DEBUG -- : query: "{\"tickets\":[{\"type\":\"382738\",\"number\":\"12\"}]}"
+I, [2017-10-01T14:33:54.741854 #33300]  INFO -- : Net::HTTP::Put: /api/transactions/C122C3DF131B7689173069B608BD4BB8
+D, [2017-10-01T14:33:54.741928 #33300] DEBUG -- : request-header: accept-encoding => gzip,deflate,identity
+D, [2017-10-01T14:33:54.741978 #33300] DEBUG -- : request-header: accept => application/json, text/javascript
+D, [2017-10-01T14:33:54.742022 #33300] DEBUG -- : request-header: user-agent => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9
+D, [2017-10-01T14:33:54.742064 #33300] DEBUG -- : request-header: accept-charset => ISO-8859-1,utf-8;q=0.7,*;q=0.7
+D, [2017-10-01T14:33:54.742107 #33300] DEBUG -- : request-header: accept-language => en-us,en;q=0.5
+D, [2017-10-01T14:33:54.742149 #33300] DEBUG -- : request-header: host => pathe.nl
+D, [2017-10-01T14:33:54.742197 #33300] DEBUG -- : request-header: referer => https://pathe.nl/tickets/C122C3DF131B7689173069B608BD4BB8
+D, [2017-10-01T14:33:54.742241 #33300] DEBUG -- : request-header: content-type => application/json; charset=UTF-8
+D, [2017-10-01T14:33:54.742282 #33300] DEBUG -- : request-header: content-length => 45
+I, [2017-10-01T14:33:54.758509 #33300]  INFO -- : status: Net::HTTPFound 1.1 302 Found
+D, [2017-10-01T14:33:54.758592 #33300] DEBUG -- : response-header: cache-control => no-cache
+D, [2017-10-01T14:33:54.758639 #33300] DEBUG -- : response-header: content-length => 0
+D, [2017-10-01T14:33:54.758692 #33300] DEBUG -- : response-header: location => https://www.pathe.nl/api/transactions/C122C3DF131B7689173069B608BD4BB8
+D, [2017-10-01T14:33:54.758745 #33300] DEBUG -- : response-header: connection => close
+D, [2017-10-01T14:33:54.758819 #33300] DEBUG -- : Read 0 bytes (0 total)
+I, [2017-10-01T14:33:54.759097 #33300]  INFO -- : follow redirect to: https://www.pathe.nl/api/transactions/C122C3DF131B7689173069B608BD4BB8
+I, [2017-10-01T14:33:54.759660 #33300]  INFO -- : Net::HTTP::Get: /api/transactions/C122C3DF131B7689173069B608BD4BB8
+D, [2017-10-01T14:33:54.759705 #33300] DEBUG -- : request-header: accept-encoding => gzip,deflate,identity
+D, [2017-10-01T14:33:54.759733 #33300] DEBUG -- : request-header: accept => application/json, text/javascript
+D, [2017-10-01T14:33:54.759760 #33300] DEBUG -- : request-header: user-agent => Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9
+D, [2017-10-01T14:33:54.759784 #33300] DEBUG -- : request-header: accept-charset => ISO-8859-1,utf-8;q=0.7,*;q=0.7
+D, [2017-10-01T14:33:54.759808 #33300] DEBUG -- : request-header: accept-language => en-us,en;q=0.5
+D, [2017-10-01T14:33:54.759835 #33300] DEBUG -- : request-header: cookie => SERVERID=w7; ai=1QMhzBKgFDERWu-IbMQyMER1hI8PHr6hwgG1tRjbR5i6MYbywcaIG7_0UyWtY-LIf2QU6q5w7j3p3lTm_7mJz90wrhUioYCyUyX4BDU1v_G5xmmNLsY45Hfc3yzEBb5ip5kWjg2; tru=https://www.pathe.nl/tickets/start/2308082
+D, [2017-10-01T14:33:54.759864 #33300] DEBUG -- : request-header: host => www.pathe.nl
+D, [2017-10-01T14:33:54.759892 #33300] DEBUG -- : request-header: referer => https://pathe.nl/tickets/C122C3DF131B7689173069B608BD4BB8
