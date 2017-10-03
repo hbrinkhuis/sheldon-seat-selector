@@ -16,7 +16,7 @@ client.start_ticket_transaction
 
 client.reserve_tickets(1)
 
-client.get_seat_map
+map = client.get_seat_map
 
 
 # transaction_start_path = "/tickets/start/#{show_id}"

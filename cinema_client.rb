@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CinemaClient
   def initialize(show_id)
     @show_id = show_id
@@ -26,10 +28,26 @@ class CinemaClient
     @agent.put(ticket_put_uri, entity.to_json, headers)
   end
 
+  def reserve_seat(seat_id)
+    seat_put_uri = "#{@host}/tickets/#{@transaction_id}/seats/#{seat_id}"
+    @agent.put(seat_put_uri, '')
+  end
+
   def get_seat_map
-    ticket_list_page = @agent.history.find { |z| z.uri.path == "/tickets/#{@transaction_id}"}
+    ticket_list_page = @agent.history.find { |z| z.uri.path == "/tickets/#{@transaction_id}" }
     seat_page_link = ticket_list_page.links.find { |z| z.to_s == 'Stap 2: Stoel kiezen' }
     seat_page = seat_page_link.click
 
+    seat_map = seat_page.parser.css('#seats li').collect do |z|
+      matches = /left: (?<left>\d+)px; top: (?<top>\d+)px/.match z[:style]
+      {
+        top: matches[:top].to_i,
+        left: matches[:left].to_i,
+        id: z[:id],
+        sold: !z[:class].nil? && (z[:class].include? 'seat-sold')
+      }
+    end
+
+    seat_map
   end
 end
