@@ -7,54 +7,60 @@ require 'logger'
 require './cinema_client.rb'
 
 host = 'https://www.pathe.nl'
-show_id = '2308082'
-seat_id = '766089'
+show_id = '2312887'
+seat_ids_to_exclude = [338988,338989]
 
-client = CinemaClient.new(show_id)
+client = CinemaClient.new(show_id, 'Linux Firefox')
 
 client.start_ticket_transaction
 
-client.reserve_tickets(1)
+# client.reserve_tickets(12)
 
 map = client.get_seat_map
 
+seats = map.select do |z|
+  !z[:sold] &&
+    !z[:handicapped] &&
+    !z[:loveseat] &&
+    !seat_ids_to_exclude.include?(!z[:id])
+end
 
-# transaction_start_path = "/tickets/start/#{show_id}"
-# transaction_api_path = '/api/transactions/'
-#
-# a = Mechanize.new do |agent|
-#   agent.user_agent_alias = 'Mac Safari'
-#   logger = Logger.new STDOUT
-#   logger.level = Logger::DEBUG
-#   agent.log = logger
-# end
-#
-# ticket_list_page = a.post("#{host}#{transaction_start_path}")
-#
-# seat_page_link = ticket_list_page.links.select { |z| z.to_s == 'Stap 2: Stoel kiezen' }[0]
-# transaction_id = (%r{tickets\/([A-Z0-9]*)\/}.match seat_page_link.href)[1]
-#
-# ticket_put_uri = "#{host}#{transaction_api_path}#{transaction_id}"
-# ticket_put_response = a.put(ticket_put_uri,
-#                             { 'tickets': [{ 'type': '382738', 'number': '6' }] }.to_json,
-#                             'Referer' => "#{host}/tickets/#{transaction_id}",
-#                             'Content-Type' => 'application/json; charset=UTF-8',
-#                             'Accept' => 'application/json, text/javascript')
-#
-#
-# seat_page = seat_page_link.click
-#
-# seat_element = seat_page.parser.css("#seats li[id='#{seat_id}']")
-#
-# seats = seat_page.parser.css('#seats li')
-# current_seat_row = (%r{top: (\d+)px}.match seat_element[0][:style])[1].to_i
-# seat_rows = (seats.collect { |z| (%r{top: (\d+)px}.match z[:style])[1].to_i}).uniq.sort
-# seat_previous_row = seat_rows[seat_rows.index(current_seat_row)-1]
-# seat_next_row = seat_rows[seat_rows.index(current_seat_row)+1]
-#
-# front_seat = (seats.select { |z| z[:style].include? "top: #{seat_previous_row}" })[0][:id]
-#
-# seat_put_uri = "#{host}/tickets/#{transaction_id}/seats/#{front_seat}"
-#
-# seat_put_response = a.put(seat_put_uri, '')
-# # pp seat_put_response
+start_of_show = DateTime.new(2017,10,5,21,50,0,'+02:00')
+
+client.shutdown
+
+AGENT_ALIASES = [
+    'Linux Firefox' ,
+    'Linux Konqueror' ,
+    'Linux Mozilla' ,
+    'Mac Firefox' ,
+    'Mac Mozilla' ,
+    'Mac Safari 4' ,
+    'Mac Safari' ,
+    'Windows Chrome' ,
+    'Windows IE 6' ,
+    'Windows IE 7' ,
+    'Windows IE 8' ,
+    'Windows IE 9' ,
+    'Windows IE 10' ,
+    'Windows IE 11' ,
+    'Windows Edge' ,
+    'Windows Mozilla' ,
+    'Windows Firefox' ,
+    'iPhone' ,
+    'iPad' ,
+    'Android' ,
+]
+
+seats.each_with_index do |seat,i|
+  c2 = CinemaClient.new(show_id, AGENT_ALIASES[(i % AGENT_ALIASES.length)])
+
+  c2.start_ticket_transaction
+  sleep(1)
+  c2.reserve_tickets(1)
+  sleep(2)
+  result = c2.reserve_seat(seat[:id])
+
+  c2.shutdown
+  sleep(3)
+end
