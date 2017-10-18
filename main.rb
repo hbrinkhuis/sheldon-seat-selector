@@ -7,22 +7,22 @@ require 'logger'
 require './cinema_client.rb'
 
 host = 'https://www.pathe.nl'
-show_id = '2312887'
-seat_ids_to_exclude = [338988,338989]
+show_id = '2330593'
+ticket_type = 393290
+# seat_ids_to_exclude = [338988,338989]
 
-client = CinemaClient.new(show_id, 'Linux Firefox')
+client = CinemaClient.new(host, show_id)
 
-client.start_ticket_transaction
+transaction = client.start_ticket_transaction
 
-# client.reserve_tickets(12)
+client.reserve_tickets(transaction,12, ticket_type)
 
-map = client.get_seat_map
+map = client.get_seat_map(transaction)
 
 seats = map.select do |z|
   !z[:sold] &&
     !z[:handicapped] &&
-    !z[:loveseat] &&
-    !seat_ids_to_exclude.include?(!z[:id])
+    !z[:loveseat]
 end
 
 start_of_show = DateTime.new(2017,10,5,21,50,0,'+02:00')
@@ -52,15 +52,15 @@ AGENT_ALIASES = [
     'Android' ,
 ]
 
-seats.each_with_index do |seat,i|
-  c2 = CinemaClient.new(show_id, AGENT_ALIASES[(i % AGENT_ALIASES.length)])
-
-  c2.start_ticket_transaction
-  sleep(1)
-  c2.reserve_tickets(1)
-  sleep(2)
-  result = c2.reserve_seat(seat[:id])
-
-  c2.shutdown
-  sleep(3)
-end
+# seats.each_with_index do |seat,i|
+#   c2 = CinemaClient.new(show_id, AGENT_ALIASES[(i % AGENT_ALIASES.length)])
+#
+#   c2.start_ticket_transaction
+#   sleep(1)
+#   c2.reserve_tickets(1)
+#   sleep(2)
+#   result = c2.reserve_seat(seat[:id])
+#
+#   c2.shutdown
+#   sleep(3)
+# end

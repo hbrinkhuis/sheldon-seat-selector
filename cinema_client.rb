@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class CinemaClient
-  def initialize(show_id, agent_alias)
+  def initialize(host, show_id)
     @show_id = show_id
-    @host = 'https://www.pathe.nl'
+    @host = host
     @transaction_start_path = "#{@host}/tickets/start/#{@show_id}"
     @transaction_api_path = '/api/transactions/'
     @agent = Mechanize.new do |agent|
-      agent.user_agent_alias = agent_alias
+      agent.user_agent_alias = 'Mac Safari'
       logger = Logger.new STDOUT
       logger.level = Logger::DEBUG
       agent.log = logger
@@ -16,15 +16,15 @@ class CinemaClient
 
   def start_ticket_transaction
     ticket_list_page = @agent.post(@transaction_start_path)
-    @transaction_id = (%r{tickets\/(?<tid>[A-Z0-9]*)}.match ticket_list_page.uri.path)[:tid]
+    (%r{tickets\/(?<tid>[A-Z0-9]*)}.match ticket_list_page.uri.path)[:tid]
   end
 
-  def reserve_tickets(number)
-    ticket_put_uri = "#{@host}#{@transaction_api_path}#{@transaction_id}"
-    headers = { 'Referer' => "#{@host}/tickets/#{@transaction_id}",
+  def reserve_tickets(transaction_id, number, ticket_type)
+    ticket_put_uri = "#{@host}#{@transaction_api_path}#{transaction_id}"
+    headers = { 'Referer' => "#{@host}/tickets/#{transaction_id}",
                 'Content-Type' => 'application/json; charset=UTF-8',
                 'Accept' => 'application/json, text/javascript' }
-    entity = { 'tickets': [{ 'type': '382738', 'number': number.to_s }] }
+    entity = { 'tickets': [{ 'type': ticket_type, 'number': number.to_s }] }
     begin
       result = @agent.put(ticket_put_uri, entity.to_json, headers)
     rescue Mechanize::ResponseCodeError
@@ -32,13 +32,13 @@ class CinemaClient
     end
   end
 
-  def reserve_seat(seat_id)
-    seat_put_uri = "#{@host}/tickets/#{@transaction_id}/seats/#{seat_id}"
+  def reserve_seat(transaction_id, seat_id)
+    seat_put_uri = "#{@host}/tickets/#{transaction_id}/seats/#{seat_id}"
     @agent.put(seat_put_uri, '')
   end
 
-  def get_seat_map
-    ticket_list_page = @agent.history.find { |z| z.uri.path == "/tickets/#{@transaction_id}" }
+  def get_seat_map(transaction_id)
+    ticket_list_page = @agent.history.find { |z| z.uri.path == "/tickets/#{transaction_id}" }
     seat_page_link = ticket_list_page.links.find { |z| z.to_s == 'Stap 2: Stoel kiezen' }
     seat_page = seat_page_link.click
 
@@ -53,6 +53,10 @@ class CinemaClient
         loveseat: !z[:class].nil? && (z[:class].include? 'seat-ls')
       }
     end
+  end
+
+  def stop_ticket_transaction(transaction_id)
+    @agent.post("#{@host}/tickets-annuleren/#{transaction_id}")
   end
 
   def shutdown
