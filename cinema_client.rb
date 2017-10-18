@@ -1,10 +1,9 @@
 # frozen_string_literal: true
+require 'mechanize'
 
 class CinemaClient
-  def initialize(host, show_id)
-    @show_id = show_id
+  def initialize(host)
     @host = host
-    @transaction_start_path = "#{@host}/tickets/start/#{@show_id}"
     @transaction_api_path = '/api/transactions/'
     @agent = Mechanize.new do |agent|
       agent.user_agent_alias = 'Mac Safari'
@@ -14,8 +13,8 @@ class CinemaClient
     end
   end
 
-  def start_ticket_transaction
-    ticket_list_page = @agent.post(@transaction_start_path)
+  def start_ticket_transaction(show_id)
+    ticket_list_page = @agent.post("#{@host}/tickets/start/#{show_id}")
     (%r{tickets\/(?<tid>[A-Z0-9]*)}.match ticket_list_page.uri.path)[:tid]
   end
 
@@ -32,15 +31,13 @@ class CinemaClient
     end
   end
 
-  def reserve_seat(transaction_id, seat_id)
+  def reserve_seats(transaction_id, seat_id)
     seat_put_uri = "#{@host}/tickets/#{transaction_id}/seats/#{seat_id}"
     @agent.put(seat_put_uri, '')
   end
 
   def get_seat_map(transaction_id)
-    ticket_list_page = @agent.history.find { |z| z.uri.path == "/tickets/#{transaction_id}" }
-    seat_page_link = ticket_list_page.links.find { |z| z.to_s == 'Stap 2: Stoel kiezen' }
-    seat_page = seat_page_link.click
+    seat_page = @agent.get("#{@host}/tickets/#{transaction_id}/stoelen")
 
     seat_page.parser.css('#seats li').collect do |z|
       matches = /left: (?<left>\d+)px; top: (?<top>\d+)px/.match z[:style]
