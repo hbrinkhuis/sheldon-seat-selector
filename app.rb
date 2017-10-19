@@ -4,6 +4,9 @@ require './cinema_client.rb'
 
 host = 'https://www.pathe.nl'
 
+set :bind, '0.0.0.0'
+set :port, 4567
+
 get '/start_transaction/:show_id' do
   agent = CinemaClient.new('https://www.pathe.nl')
   transaction_id = agent.start_ticket_transaction( params['show_id'])
@@ -27,5 +30,5 @@ get '/stop_transaction/:transaction_id' do
 end
 
 get '/reserve_seats/:transaction_id/:seat_id/:number_of_seats' do
-  
+
 end
