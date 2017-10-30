@@ -7,4 +7,4 @@ RUN bundle install
 
 EXPOSE 4567
 
-CMD ['ruby ./app.rb']
+CMD ["bundle", "exec", "ruby", "./seat_service.rb"]
